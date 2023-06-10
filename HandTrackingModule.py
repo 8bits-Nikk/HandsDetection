@@ -1,7 +1,5 @@
 import cv2
 import mediapipe as mp
-import time
-
 
 class HandDetector:
     def __init__(self, mode=False, max_hands=2, detection_confidence=0.5, track_confidence=0.5):
@@ -12,8 +10,9 @@ class HandDetector:
         self.detection_confidence = detection_confidence
 
         self.mpHands = mp.solutions.hands
-        self.hands = self.mpHands.Hands(self.mode, self.max_hands, self.detection_confidence,
-                                        self.track_confidence)
+        # self.hands = self.mpHands.Hands(self.mode, self.max_hands, self.detection_confidence,
+        #                                 self.track_confidence)
+        self.hands = self.mpHands.Hands(max_hands)
         self.mpDraw = mp.solutions.drawing_utils
 
     def findHands(self, img, draw=True):
